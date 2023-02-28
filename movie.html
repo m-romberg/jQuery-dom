@@ -24,22 +24,22 @@
 $('form').on('submit', function(evt){
   evt.preventDefault();
   console.log('form submitted');
-  let movieTitle = $("#form-title").val();
-  let movieRating = $("#form-rating").val();
+  const movieTitle = $("#form-title").val();
+  const movieRating = $("#form-rating").val();
   console.log('title=', movieTitle, 'rating=', movieRating);
 
-  let deleteButt = $("<button class = 'movies-btn--delete'> Delete </button>");
-  let $movieList = $("<li>").text(`Movie: ${movieTitle}, Rating: ${movieRating}`);
-  $movieList.append(deleteButt);
+  const $deleteButt = $("<button class = 'movies-btn--delete'> Delete </button>");
+  const $movieList = $("<li>").text(`Movie: ${movieTitle}, Rating: ${movieRating}`);
+  $movieList.append($deleteButt);
 
   $(".movies").append($movieList);
-
 })
 
 $(".movies").on('click', ".movies-btn--delete", deleteMovie);
 
 function deleteMovie(evt){
-  evt.target.closest("li").remove();
+  console.log(evt.target);
+  $(evt.target).closest("li").remove();
 }
 
 </script>
