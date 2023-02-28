@@ -20,6 +20,7 @@
 
 <script src="https://unpkg.com/jquery"></script>
 <script>
+
 $('form').on('submit', function(evt){
   evt.preventDefault();
   console.log('form submitted');
@@ -27,9 +28,19 @@ $('form').on('submit', function(evt){
   let movieRating = $("#form-rating").val();
   console.log('title=', movieTitle, 'rating=', movieRating);
 
-  $(".movies").append(`<li>Movie: ${movieTitle}, Rating: ${movieRating}</li>`);
+  let deleteButt = $("<button class = 'movies-btn--delete'> Delete </button>");
+  let $movieList = $("<li>").text(`Movie: ${movieTitle}, Rating: ${movieRating}`);
+  $movieList.append(deleteButt);
+
+  $(".movies").append($movieList);
 
 })
+
+$(".movies").on('click', ".movies-btn--delete", deleteMovie);
+
+function deleteMovie(evt){
+  evt.target.closest("li").remove();
+}
 
 </script>
 </body>
