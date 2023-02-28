@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method='get'class="form">
+    <input type="text" placeholder="Movie Title" id="form-title" >
+    <input type="number" min="0" max="10" value="5" id="form-rating" >
+    <input type="submit" class="form-submit" >
+  </form>
+
+  <ol class="movies">
+  </ol>
+
+
+
+<script src="https://unpkg.com/jquery"></script>
+<script>
+$('form').on('submit', function(evt){
+  evt.preventDefault();
+  console.log('form submitted');
+  let movieTitle = $("#form-title").val();
+  let movieRating = $("#form-rating").val();
+  console.log('title=', movieTitle, 'rating=', movieRating);
+
+  $(".movies").append(`<li>Movie: ${movieTitle}, Rating: ${movieRating}</li>`);
+
+})
+
+</script>
+</body>
+</html>
